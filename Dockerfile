@@ -2,7 +2,7 @@ FROM node:14-buster
 RUN npm --version
 RUN npm install -g --save dompurify@2.0.8 redoc-cli
 FROM jenkins/jenkins:2.332.3-jdk11
-USER jenkins
+USER root
 RUN apt-get update && apt-get install -y lsb-release
 RUN curl -fsSLo /usr/share/keyrings/docker-archive-keyring.asc \
   https://download.docker.com/linux/debian/gpg
