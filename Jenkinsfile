@@ -1,12 +1,9 @@
 pipeline {
     agent {
         docker {
-            image 'node:lts-buster-slim'
-            args '-p 3000:3000'
+            image 'node:latest'
+            args '-u root:root'
         }
-    }
-    environment {
-        CI = 'true'
     }
     stages {
         stage('Build') {
@@ -14,7 +11,7 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Test') {
+      stage('Test') {
             steps {
                 sh './jenkins/scripts/test.sh'
             }
